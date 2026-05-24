@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studyroomserver.mapper.SeatMapper">
+
+    <select id="selectByAreaId" resultType="com.example.studyroomserver.entity.Seat">
+        SELECT * FROM seat WHERE area_id = #{areaId} AND deleted = 0 ORDER BY seat_number
+    </select>
+
+    <select id="selectAvailableSeats" resultType="com.example.studyroomserver.entity.Seat">
+        SELECT * FROM seat WHERE area_id = #{areaId} AND status = 'AVAILABLE' AND deleted = 0 ORDER BY seat_number
+    </select>
+
+</mapper>
