@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studyroomserver.mapper.UsageRecordMapper">
+
+    <select id="selectByOrderId" resultType="com.example.studyroomserver.entity.UsageRecord">
+        SELECT * FROM usage_record WHERE order_id = #{orderId}
+    </select>
+
+    <select id="selectByUserId" resultType="com.example.studyroomserver.entity.UsageRecord">
+        SELECT ur.* FROM usage_record ur
+        INNER JOIN order_info oi ON ur.order_id = oi.id
+        WHERE oi.user_id = #{userId}
+        ORDER BY ur.actual_start_time DESC
+    </select>
+
+</mapper>
